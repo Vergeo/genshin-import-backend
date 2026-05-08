@@ -1,9 +1,9 @@
 INSERT INTO users (username, password, full_name, role) VALUES
-('zhongli',     'geo1234',    'Zhongli Rex Lapis',   'admin'),
-('raiden',      'electro123', 'Raiden Shogun',        'admin'),
-('hutao',       'pyro1234',   'Hu Tao',               'user'),
-('kazuha',      'anemo123',   'Kaedehara Kazuha',     'user'),
-('ganyu',       'cryo1234',   'Ganyu',                'user');
+('zhongli',     'Geo1234',    'Zhongli Rex Lapis',   'admin'),
+('raiden',      'Electro123', 'Raiden Shogun',        'admin'),
+('hutao',       'Pyro1234',   'Hu Tao',               'user'),
+('kazuha',      'Anemo123',   'Kaedehara Kazuha',     'user'),
+('ganyu',       'Cryo1234',   'Ganyu',                'user');
 
 INSERT INTO items (item_name, item_type, item_description, item_stock, item_image, item_price) VALUES
 ('Primogem',        'Currency',  'Primary currency used to wish on banners.',          500,  'primogem.png',       0.99),

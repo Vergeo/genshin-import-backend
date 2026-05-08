@@ -1,5 +1,5 @@
 DB_HOST = localhost
 DB_USER = root
 DB_PASS =
-DB_NAME = Genshin_Import
+DB_NAME = genshin_import
 DB_PORT = 3306

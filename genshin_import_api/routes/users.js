@@ -25,10 +25,10 @@ const userValidation = [
 
 function validator(req, res, next) {
     const errors = validationResult(req);
-    if(!errors.isEmpty) {
+    if(!errors.isEmpty()) {
         return res.status(400).json({'error': errors.array()});
     }
-    next;
+    next();
 }
 
 router.get('/getAll', async (req, res) => {
