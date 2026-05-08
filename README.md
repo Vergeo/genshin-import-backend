@@ -52,7 +52,7 @@ npm run dev
 To populate the database with dummy data, import the `dummy.txt` SQL file into your MySQL database via **phpMyAdmin** or the MySQL CLI:
 
 ```bash
-mysql -u root -p your_database_name < dummy.txt
+mysql -u root -p Genshin_Import < dummy.txt
 ```
 
 ---
