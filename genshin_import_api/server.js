@@ -1,9 +1,9 @@
-const express = require('express')
-const {initializeDatabase, getPool} = require('./database/db')
-const usersRouter = require('./routes/users')
-const itemsRouter = require('./routes/items')
-const salesRouter = require('./routes/sales')
-const wishlistsRouter = require('./routes/wishlists')
+const express = require('express');
+const {initializeDatabase, getPool} = require('./database/db');
+const usersRouter = require('./routes/users');
+const itemsRouter = require('./routes/items');
+const salesRouter = require('./routes/sales');
+const wishlistsRouter = require('./routes/wishlists');
 
 const app = express();
 app.use(express.json());
@@ -13,8 +13,8 @@ app.use('/sales', salesRouter);
 app.use('/wishlists', wishlistsRouter);
 
 app.get('/', (req, res) => {
-    res.json({'message': 'Genshin Import API is running'})
-});
+    res.json({'message': 'Genshin Import API is running'});
+})
 
 async function start() {
     try {

@@ -11,6 +11,7 @@
     "debug": "~2.6.9",
     "dotenv": "^17.4.2",
     "express": "^4.22.1",
+    "express-validator": "^7.3.2",
     "morgan": "^1.10.1",
     "mysql2": "^3.22.3",
     "nodemon": "^3.1.14"
