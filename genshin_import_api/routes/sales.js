@@ -2,21 +2,18 @@ var express = require('express');
 var router = express.Router();
 const {initializeDatabase, getPool} = require('../database/db');
 
-router.get('/getAll', async (req, res) => {
+router.get('/get-all-sales', async (req, res) => {
     try {
         const [result] = await getPool().query(
             'SELECT * FROM sales'
         )
-        if(result.length === 0){
-            return res.status(404).json({'error': 'sales is empty'});
-        }
         res.status(200).json(result);
     } catch(err){
-        res.status(500).json({'error': 'failed to fetch sales'});
+        res.status(500).json({'error': 'failed to fetch sale'});
     }
 })
 
-router.get('/get/:sales_id', async (req, res) => {
+router.get('/get-sales/:sales_id', async (req, res) => {
     try {
         const {sales_id} = req.params;
         const [result] = await getPool().query(
@@ -32,7 +29,34 @@ router.get('/get/:sales_id', async (req, res) => {
     }
 })
 
-router.post('/post', async (req, res) => {
+router.get('/get-sales-by-users/:user_id', async (req, res) => {
+    try {
+        const {user_id} = req.params;
+        const [result] = await getPool().query(
+            'SELECT * FROM sales WHERE user_id = ?',
+            [user_id]
+        )
+        if(result.length === 0){
+            res.status(404).json({'error': 'sale not found'});
+        }
+        res.status(200).json(result);
+    } catch(err){
+        res.status(500).json({'error': 'failed to fetch sale'});
+    }
+})
+
+router.get('/get-top-sales', async (req, res) => {
+    try {
+        const [result] = await getPool().query(
+            'SELECT MAX(quantity) FROM sales LIMIT 10'
+        )
+        res.status(200).json(result);
+    } catch(err){
+        res.status(500).json({'error': 'failed to fetch sale'});
+    }
+})
+
+router.post('/create-wishlists', async (req, res) => {
     try {
         const {user_id, item_id, quantity} = req.body;
         const [result] = await getPool().query(
@@ -41,7 +65,7 @@ router.post('/post', async (req, res) => {
         )
         res.status(201).json({sales_id: result.insertId, user_id, item_id, quantity});
     } catch(err){
-        res.status(500).json({'error': 'failed to post sale'});
+        res.status(500).json({'error': 'failed to create sale'});
     }
 })
 
@@ -62,7 +86,7 @@ router.patch('/patch/:sales_id', async (req, res) => {
     }
 })
 
-router.delete('/delete/:sales_id', async (req, res) => {
+router.delete('/delete-wishlists/:sales_id', async (req, res) => {
     try {
         const {sales_id} = req.params;
         const [result]  = await getPool().query(
@@ -70,7 +94,7 @@ router.delete('/delete/:sales_id', async (req, res) => {
             [sales_id]
         )
         if(result.affectedRows === 0){
-            return res.status(404).json({'error': 'failed to delete sale'});
+            return res.status(404).json({'error': 'sale not found'});
         }
         res.status(200).json({'message': 'sale deleted'});
     } catch(err){

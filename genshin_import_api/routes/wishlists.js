@@ -7,12 +7,9 @@ router.get('/getAll', async (req, res) => {
         const [result] = await getPool().query(
             'SELECT * FROM wishlists'
         )
-        if(result.length === 0){
-            return res.status(404).json({'error': 'wishlists is empty'});
-        }
         res.status(200).json(result);
     } catch(err){
-        res.status(500).json({'error': 'failed to fetch wishlists'});
+        res.status(500).json({'error': 'failed to fetch wishlist'});
     }
 })
 
@@ -32,7 +29,24 @@ router.get('/get/:wishlist_id', async (req, res) => {
     }
 })
 
-router.post('/post', async (req, res) => {
+router.get('/get-wishlists-by-users-items/query', async (req, res) => {
+    try {
+        const {user_id} = req.query.user_id;
+        const {item_id} = req.query.item_id;
+        const [result] = await getPool().query(
+            'SELECT * FROM wishlists WHERE user_id = ? AND item_id = ?',
+            [user_id, item_id]
+        )
+        if(result.length === 0){
+            res.status(404).json({'error': 'wishlist not found'});
+        }
+        res.status(200).json(result);
+    } catch(err){
+        res.status(500).json({'error': 'failed to fetch wishlist'});
+    }
+})
+
+router.post('/create-wishlists', async (req, res) => {
     try {
         const {user_id, item_id} = req.body;
         const [result] = await getPool().query(
@@ -41,7 +55,7 @@ router.post('/post', async (req, res) => {
         )
         res.status(201).json({wishlist_id: result.insertId, user_id, item_id});
     } catch(err){
-        res.status(500).json({'error': 'failed to post wishlist'});
+        res.status(500).json({'error': 'failed to create wishlist'});
     }
 })
 
@@ -62,7 +76,7 @@ router.patch('/patch/:wishlist_id', async (req, res) => {
     }
 })
 
-router.delete('/delete/:wishlist_id', async (req, res) => {
+router.delete('/delete-wishlists/:wishlist_id', async (req, res) => {
     try {
         const {wishlist_id} = req.params;
         const [result] = await getPool().query(

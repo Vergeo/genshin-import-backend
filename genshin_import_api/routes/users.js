@@ -31,29 +31,26 @@ function validator(req, res, next) {
     next();
 }
 
-router.get('/getAll', async (req, res) => {
+router.get('/get-all-users', async (req, res) => {
     try {
         const [result] = await getPool().query(
             'SELECT * FROM users'
         )
-        if(result.length === 0){
-            return res.status(404).json({'error': 'users is empty'});
-        }
         res.status(200).json(result);
     } catch (err) {
-        res.status(500).json({'error': 'failed to fetch users'});
+        res.status(500).json({'error': 'failed to fetch user'});
     }
 })
 
-router.get('/get/:user_id', async (req, res) => {
+router.get('/get-users/:user_id', async (req, res) => {
     try {
         const {user_id} = req.params;
         const [result] = await getPool().query(
             'SELECT * FROM users WHERE user_id = ?',
             [user_id]
         )
-        if(result.length === 0) {
-            return res.status(404).json({'error': 'user not found'});
+        if(result.length === 0){
+            res.status(404).json({'error': 'user not found'});
         }
         res.status(200).json(result);
     } catch (err) {
@@ -61,7 +58,7 @@ router.get('/get/:user_id', async (req, res) => {
     }
 })
 
-router.post('/post', userValidation, validator, async (req, res) => {
+router.post('/create-users', userValidation, validator, async (req, res) => {
     try {
         const {username, password, full_name, role} = req.body;
         const [result] = await getPool().query(
@@ -70,11 +67,11 @@ router.post('/post', userValidation, validator, async (req, res) => {
         )
         res.status(201).json({user_id: result.insertId, username, full_name, role});
     } catch (err) {
-        res.status(500).json({'error': 'failed to post user'});
+        res.status(500).json({'error': 'failed to create user'});
     }
 })
 
-router.patch('/patch/:user_id', async (req, res) => {
+router.patch('/update-users/:user_id', async (req, res) => {
     try {
         const {user_id} = req.params;
         const {username, password, full_name, role} = req.body;
@@ -91,7 +88,7 @@ router.patch('/patch/:user_id', async (req, res) => {
     }
 })
 
-router.delete('/delete/:user_id', async (req, res) => {
+router.delete('/delete-users/:user_id', async (req, res) => {
   try {
     const {user_id} = req.params;
     const [result] = await getPool().query(
