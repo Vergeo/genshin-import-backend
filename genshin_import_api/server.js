@@ -4,6 +4,7 @@ const usersRouter = require('./routes/users');
 const itemsRouter = require('./routes/items');
 const salesRouter = require('./routes/sales');
 const wishlistsRouter = require('./routes/wishlists');
+const authRouter = require('./routes/auth');
 
 const app = express();
 app.use(express.json());
@@ -11,6 +12,7 @@ app.use('/users', usersRouter);
 app.use('/items', itemsRouter);
 app.use('/sales', salesRouter);
 app.use('/wishlists', wishlistsRouter);
+app.use('/auth', authRouter);
 
 app.get('/', (req, res) => {
     res.json({'message': 'Genshin Import API is running'});

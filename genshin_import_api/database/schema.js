@@ -5,6 +5,7 @@ CREATE TABLE IF NOT EXISTS users (
     password  VARCHAR(50)  NOT NULL,
     full_name VARCHAR(100) NOT NULL,
     role      VARCHAR(50)  NOT NULL,
+    refresh_token VARCHAR(500) NULL,
     PRIMARY KEY (user_id)
 );
 
