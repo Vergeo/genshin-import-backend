@@ -58,11 +58,11 @@ router.post('/user-register', userRegisterValidation, validator, async (req, res
         const user_id = result.insertId;
         const tokenPayload = {user_id, username, role};
         const accessToken = jwt.sign(
-            tokenPayload, process.env.accessToken,
+            tokenPayload, process.env.ACCESS_TOKEN,
             {expiresIn: '15m'}
         );
         const refreshToken = jwt.sign(
-            tokenPayload, process.env.refreshToken,
+            tokenPayload, process.env.REFRESH_TOKEN,
             {expiresIn: '1d'}
         );
         await getPool().query(
@@ -74,6 +74,7 @@ router.post('/user-register', userRegisterValidation, validator, async (req, res
         res.status(201).json({user_id, username, full_name, role, accessToken, refreshToken});
         
     } catch(err) {
+        console.log(err);
         res.status(500).json({'message': 'failed to register user'});
     }
 })
@@ -81,28 +82,33 @@ router.post('/user-register', userRegisterValidation, validator, async (req, res
 router.post('/user-login', userLoginValidation, validator, async (req, res) => {
     try {
         const {username, password} = req.body;
+        console.log('Login: ', username, password);
         const [result] = await getPool().query(
             `SELECT *
             FROM users
             WHERE username = ?`,
             [username]
         )
+        console.log('result: ', result);
         if(result.length === 0){
             return res.status(404).json({'message': 'user not found'});
         }
         const user = result[0]
+        console.log('Hash: ', user.password);
+        console.log('compare: ', password);
         const isPasswordMatch = await bcrypt.compare(password, user.password);
+        console.log('password match: ', isPasswordMatch);
         if(!isPasswordMatch) {
             return res.status(401).json({'message': 'Invalid password'});
         }
         const {user_id, full_name, role} = user;
         const tokenPayload = {user_id, username: user.username, role};
         const accessToken = jwt.sign(
-            tokenPayload, process.env.accessToken,
+            tokenPayload, process.env.ACCESS_TOKEN,
             {expiresIn: '15m'}
         );
         const refreshToken = jwt.sign(
-            tokenPayload, process.env.refreshToken,
+            tokenPayload, process.env.REFRESH_TOKEN,
             {expiresIn: '1d'}
         );
         await getPool().query(

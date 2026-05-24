@@ -1,9 +1,9 @@
 INSERT INTO users (username, password, full_name, role, refresh_token) VALUES
-('zhongli', '$2b$10$bGMEz/LqQsslLVzXgWdoaeOixYI.GvRAZT8b5.PIb8B5HYAPKlx0G', 'Zhongli Rex Lapis', 'admin', NULL),
-('raiden',  '$2b$10$HEFkPPgOtKXu8pSL9vJ95.//HS2jpJ/UHQqt58TBMXHfOLKMUB.kq', 'Raiden Shogun',     'admin', NULL),
-('hutao',   '$2b$10$JIkdNg2hWKQoRnAvgf5Yf.MPZliMUlWs93VAmeYP2Gg5PxZ13SSNq', 'Hu Tao',            'user',  NULL),
-('kazuha',  '$2b$10$oLKVLNPlBOonpxCnLgybMOpLbXvB7/WEYwqHeKlHoyeaTUAmC5mYa', 'Kaedehara Kazuha',  'user',  NULL),
-('ganyu',   '$2b$10$oDALgH.qNhpGHAuHYxLgYuizPz6l76/HpjCnaQpcncsLCebsyWBRi', 'Ganyu',             'user',  NULL);
+('zhongli', '$2b$10$ynxYRgbc/1wJrTIEX/KG/.RWMXR2nszssV4bUpG8csCTt2hDRkLJe', 'Zhongli Rex Lapis', 'admin', NULL),
+('raiden',  '$2b$10$38NX3osJz000OSAWsNyao.ffK2owyH5F8o8lj3egXSbUCZ0ouuPl2', 'Raiden Shogun',     'admin', NULL),
+('hutao',   '$2b$10$1eTsflS1DJBXAsUXGk82LeJBnKtJIulrXPjcfL9HHIaMKyx40Z50e', 'Hu Tao',            'user',  NULL),
+('kazuha',  '$2b$10$GS82/vkKypyUzwZ8NxW8T.u12phCYWGEQ/yAuza6JOredkwGkITXK', 'Kaedehara Kazuha',  'user',  NULL),
+('ganyu',   '$2b$10$2YREm2LWGlLCEXBkPwH1.eq.po/nWXhA20k7Z8HY8WJoVDsAmUbf.', 'Ganyu',             'user',  NULL);
 
 INSERT INTO items (item_name, item_type, item_description, item_stock, item_image, item_price) VALUES
 ('Primogem',         'Currency', 'Primary currency used to wish on banners.',          500, 'primogem.png',       0.99),
