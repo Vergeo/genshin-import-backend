@@ -47,12 +47,20 @@ npm run dev
 
 ---
 
+## API Reference
+
+A full list of available endpoints, parameters, request bodies, and responses can be found in the spreadsheet shared below:
+
+[View API Endpoints Spreadsheet](https://docs.google.com/spreadsheets/d/1EToRbtVOs_gEEOPFvz4TMxPwWs_zsPEVNW07ao4n9G4/edit?usp=sharing)
+
+---
+
 ##  Database Setup (Optional)
 
 To populate the database with dummy data, import the `dummy.txt` SQL file into your MySQL database via **phpMyAdmin** or the MySQL CLI:
 
 ```bash
-mysql -u root -p Genshin_Import < dummy.txt
+mysql -u root -p genshin_import < dummy.txt
 ```
 
 ---

@@ -1,10 +1,12 @@
 const schema = `
 CREATE TABLE IF NOT EXISTS users (
     user_id   INT(10)      NOT NULL AUTO_INCREMENT,
-    username  VARCHAR(50)  NOT NULL,
-    password  VARCHAR(50)  NOT NULL,
+    username  VARCHAR(50)  NOT NULL UNIQUE,
+    email VARCHAR(255) UNIQUE,
+    password  VARCHAR(255)  NULL,
     full_name VARCHAR(100) NOT NULL,
     role      VARCHAR(50)  NOT NULL,
+    auth_provider ENUM('local', 'google') NOT NULL DEFAULT 'local',
     PRIMARY KEY (user_id)
 );
 
@@ -28,15 +30,6 @@ CREATE TABLE IF NOT EXISTS sales (
     FOREIGN KEY (user_id) REFERENCES users(user_id) ON DELETE CASCADE,
     FOREIGN KEY (item_id) REFERENCES items(item_id) ON DELETE CASCADE
 );
-
-CREATE TABLE IF NOT EXISTS wishlists (
-    wishlist_id INT(10) NOT NULL AUTO_INCREMENT,
-    user_id     INT(10) NOT NULL,
-    item_id     INT(10) NOT NULL,
-    PRIMARY KEY (wishlist_id),
-    FOREIGN KEY (user_id) REFERENCES users(user_id) ON DELETE CASCADE,
-    FOREIGN KEY (item_id) REFERENCES items(item_id) ON DELETE CASCADE
-);
-`
+`;
 
 module.exports = schema;
