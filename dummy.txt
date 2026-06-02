@@ -1,40 +1,115 @@
-INSERT INTO users (username, password, full_name, role, refresh_token) VALUES
-('zhongli', '$2b$10$ynxYRgbc/1wJrTIEX/KG/.RWMXR2nszssV4bUpG8csCTt2hDRkLJe', 'Zhongli Rex Lapis', 'admin', NULL),
-('raiden',  '$2b$10$38NX3osJz000OSAWsNyao.ffK2owyH5F8o8lj3egXSbUCZ0ouuPl2', 'Raiden Shogun',     'admin', NULL),
-('hutao',   '$2b$10$1eTsflS1DJBXAsUXGk82LeJBnKtJIulrXPjcfL9HHIaMKyx40Z50e', 'Hu Tao',            'user',  NULL),
-('kazuha',  '$2b$10$GS82/vkKypyUzwZ8NxW8T.u12phCYWGEQ/yAuza6JOredkwGkITXK', 'Kaedehara Kazuha',  'user',  NULL),
-('ganyu',   '$2b$10$2YREm2LWGlLCEXBkPwH1.eq.po/nWXhA20k7Z8HY8WJoVDsAmUbf.', 'Ganyu',             'user',  NULL);
+INSERT INTO users (
+    username,
+    password,
+    full_name,
+    role
+) VALUES
+(
+    'admin',
+    '$2b$10$1orvUYsPXQPK6/mdAqFTeu/t6bx9DJ1bdNJCrAR1bUMpDBQm0RUoa',
+    'Admin',
+    'admin'
+),
+(
+    'diluc',
+    '$2b$10$ev1KKEa2DQ21CiNF0g8M5uI3AlqqAS6l8lW12mcU5eT8acZP/pyz6',
+    'Diluc Ragnvindr',
+    'user'
+),
+(
+    'lumine',
+    '$2b$10$7tFUvRlFn4e8vUnhxJty1eY2pWnzPuEmGc6EfbEBIGWBvVxZNElbm',
+    'Lumine',
+    'user'
+);
 
-INSERT INTO items (item_name, item_type, item_description, item_stock, item_image, item_price) VALUES
-('Primogem',         'Currency', 'Primary currency used to wish on banners.',          500, 'primogem.png',       0.99),
-('Mora',             'Currency', 'Gold coins used for upgrades and ascensions.',        999, 'mora.png',           0.10),
-('Acquaint Fate',    'Wish',     'Used to wish on the standard banner.',               100, 'acquaint.png',       1.99),
-('Intertwined Fate', 'Wish',     'Used to wish on limited event banners.',             100, 'intertwined.png',    1.99),
-('Fragile Resin',    'Resin',    'Instantly replenishes 60 Original Resin.',           50,  'resin.png',          0.99),
-('Northlander Sword Billet', 'Material', 'Used to craft swords at the blacksmith.',   30,  'sword_billet.png',   4.99),
-('Mora Pouch',       'Bundle',   'Contains 100,000 Mora.',                             200, 'mora_pouch.png',     2.99),
-('Hero Wit',         'EXP',      'Character EXP material, grants 20,000 EXP.',         150, 'heros_wit.png',      1.49);
+INSERT INTO items (
+    item_name,
+    item_type,
+    item_description,
+    item_stock,
+    item_image,
+    item_price
+) VALUES
+(
+    'Wolf Gravestone',
+    'weapon',
+    'A legendary claymore of immense power.',
+    5,
+    'wolf_gravestone.png',
+    250000
+),
+(
+    'Staff of Homa',
+    'weapon',
+    'A polearm that boosts critical damage.',
+    7,
+    'staff_of_homa.png',
+    300000
+),
+(
+    'Mistsplitter Reforged',
+    'weapon',
+    'A powerful sword wielded by Raiden Shogun allies.',
+    4,
+    'mistsplitter_reforged.png',
+    320000
+),
+(
+    'Elegy for the End',
+    'weapon',
+    'A bow imbued with the power of Mondstadt.',
+    6,
+    'elegy_for_the_end.png',
+    280000
+),
+(
+    'Crimson Witch of Flames',
+    'artifact',
+    'Artifact set favored by pyro DPS characters.',
+    15,
+    'crimson_witch.png',
+    120000
+),
+(
+    'Emblem of Severed Fate',
+    'artifact',
+    'Artifact set focused on energy recharge.',
+    20,
+    'emblem_of_severed_fate.png',
+    130000
+),
+(
+    'Gladiators Finale',
+    'artifact',
+    'Classic artifact set increasing attack power.',
+    10,
+    'gladiators_finale.png',
+    100000
+),
+(
+    'Viridescent Venerer',
+    'artifact',
+    'Artifact set specializing in swirl damage.',
+    12,
+    'viridescent_venerer.png',
+    110000
+);
 
-INSERT INTO sales (user_id, item_id, quantity) VALUES
-(1, 1, 10),
-(1, 3, 2),
-(2, 4, 5),
-(3, 1, 20),
-(3, 5, 3),
-(4, 2, 50),
-(4, 6, 1),
-(5, 7, 4),
-(5, 8, 10),
-(3, 4, 1);
-
-INSERT INTO wishlists (user_id, item_id) VALUES
-(1, 4),
-(1, 6),
-(2, 1),
-(2, 8),
-(3, 3),
-(3, 7),
-(4, 1),
-(4, 5),
-(5, 2),
-(5, 6);
+INSERT INTO sales (
+    user_id,
+    item_id,
+    quantity
+) VALUES
+(2, 1, 1),
+(2, 5, 2),
+(3, 2, 1),
+(3, 6, 3),
+(2, 3, 1),
+(3, 1, 2),
+(2, 7, 4),
+(3, 8, 1),
+(2, 4, 2),
+(3, 5, 1),
+(2, 6, 2),
+(3, 2, 3);
