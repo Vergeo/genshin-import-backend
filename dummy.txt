@@ -23,78 +23,18 @@ INSERT INTO users (
     'user'
 );
 
-INSERT INTO items (
-    item_name,
-    item_type,
-    item_description,
-    item_stock,
-    item_image,
-    item_price
-) VALUES
-(
-    'Wolf Gravestone',
-    'weapon',
-    'A legendary claymore of immense power.',
-    5,
-    'wolf_gravestone.png',
-    250000
-),
-(
-    'Staff of Homa',
-    'weapon',
-    'A polearm that boosts critical damage.',
-    7,
-    'staff_of_homa.png',
-    300000
-),
-(
-    'Mistsplitter Reforged',
-    'weapon',
-    'A powerful sword wielded by Raiden Shogun allies.',
-    4,
-    'mistsplitter_reforged.png',
-    320000
-),
-(
-    'Elegy for the End',
-    'weapon',
-    'A bow imbued with the power of Mondstadt.',
-    6,
-    'elegy_for_the_end.png',
-    280000
-),
-(
-    'Crimson Witch of Flames',
-    'artifact',
-    'Artifact set favored by pyro DPS characters.',
-    15,
-    'crimson_witch.png',
-    120000
-),
-(
-    'Emblem of Severed Fate',
-    'artifact',
-    'Artifact set focused on energy recharge.',
-    20,
-    'emblem_of_severed_fate.png',
-    130000
-),
-(
-    'Gladiators Finale',
-    'artifact',
-    'Classic artifact set increasing attack power.',
-    10,
-    'gladiators_finale.png',
-    100000
-),
-(
-    'Viridescent Venerer',
-    'artifact',
-    'Artifact set specializing in swirl damage.',
-    12,
-    'viridescent_venerer.png',
-    110000
-);
+// Password: [Username]123 (with first letter capitalized)
+// For example: lumine - Lumine123
+
+INSERT INTO `items` (`item_id`, `item_name`, `item_type`, `item_description`, `item_stock`, `item_image`, `item_price`) VALUES
+(1, 'Wolf Gravestone2', 'weapon', 'A legendary claymore of immense power.', 0, 'https://static.wikia.nocookie.net/gensin-impact/images/0/0e/Weapon_Wolf%27s_Gravestone_2nd.png/revision/latest?cb=20201116032722', 250000.00),
+(2, 'Staff of Homa', 'weapon', 'A polearm that boosts critical damage.', 19, 'https://static.wikia.nocookie.net/gensin-impact/images/e/ee/Weapon_Staff_of_Homa_2nd.png/revision/latest?cb=20210321105014', 300000.00),
+(3, 'Mistsplitter Reforged', 'weapon', 'A powerful sword wielded by Raiden Shogun allies.', 0, 'https://static.wikia.nocookie.net/gensin-impact/images/d/df/Weapon_Mistsplitter_Reforged_2nd.png/revision/latest?cb=20210721035422', 320000.00),
+(4, 'Elegy for the End', 'weapon', 'A bow imbued with the power of Mondstadt.', 5, 'https://static.wikia.nocookie.net/gensin-impact/images/6/61/Weapon_Elegy_for_the_End_2nd.png/revision/latest?cb=20210319130454', 280000.00),
+(5, 'Crimson Witch of Flames', 'artifact', 'Artifact set favored by pyro DPS characters.', 15, 'https://static.wikia.nocookie.net/gensin-impact/images/0/0f/Item_Witch%27s_Flower_of_Blaze.png/revision/latest?cb=20201120065356', 120000.00),
+(6, 'Emblem of Severed Fate', 'artifact', 'Artifact set focused on energy recharge.', 15, 'https://static.wikia.nocookie.net/gensin-impact/images/5/53/Item_Magnificent_Tsuba.png/revision/latest?cb=20210721030125', 130000.00),
+(7, 'Gladiators Finale', 'artifact', 'Classic artifact set increasing attack power.', 0, 'https://static.wikia.nocookie.net/gensin-impact/images/b/b1/Item_Gladiator%27s_Nostalgia.png/revision/latest?cb=20201120063313', 100000.00),
+(8, 'Viridescent Venerer', 'artifact', 'Artifact set specializing in swirl damage.', 12, 'https://static.wikia.nocookie.net/gensin-impact/images/9/90/Item_In_Remembrance_of_Viridescent_Fields.png/revision/latest?cb=20201120064508', 110000.00);
 
 INSERT INTO sales (
     user_id,
